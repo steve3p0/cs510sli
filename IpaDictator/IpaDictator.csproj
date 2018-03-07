@@ -89,5 +89,10 @@
     <AndroidResource Include="Resources\drawable\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\IpaTranscriber\IpaTranscriber.csproj">
+      <Project>{b842a62d-dd7b-4832-a115-661eb393b226}</Project>
+      <Name>IpaTranscriber</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

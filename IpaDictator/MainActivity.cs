@@ -5,6 +5,8 @@ using Android.OS;
 using Android.Speech;
 using System.Collections.Generic;
 
+using IpaTranscriber;
+
 namespace IpaDictator
 {
     [Activity(Label = "The IPA Dictator", MainLauncher = true, Icon = "@drawable/icon")]
@@ -97,10 +99,11 @@ namespace IpaDictator
 
                         //string orthrography = textInput;
                         //string phonetic = 
-                        textBox.Text = textInput;
 
+                        IpaTranscriber.IpaTranscriber ipa = new IpaTranscriber.IpaTranscriber();
+                        string textOutput = ipa.TranscribePhrase(textInput);
 
-
+                        textBox.Text = textInput + "\n" + textOutput;
                     }
                     else
                         textBox.Text = "No speech was recognised";
