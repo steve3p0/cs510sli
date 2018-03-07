@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpaDictator", "IpaDictator\IpaDictator.csproj", "{1E2DFFA8-D5D4-4B3D-8BD6-95AD5AB8D071}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpaTranscriber", "IpaTranscriber\IpaTranscriber.csproj", "{B842A62D-DD7B-4832-A115-661EB393B226}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsIpaTranscriber", "TestsIpaTranscriber\TestsIpaTranscriber.csproj", "{96C70E97-57F7-41F8-B5CB-2F0CA6668961}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +28,22 @@ Global
 		{1E2DFFA8-D5D4-4B3D-8BD6-95AD5AB8D071}.Release|x64.ActiveCfg = Release|x64
 		{1E2DFFA8-D5D4-4B3D-8BD6-95AD5AB8D071}.Release|x64.Build.0 = Release|x64
 		{1E2DFFA8-D5D4-4B3D-8BD6-95AD5AB8D071}.Release|x64.Deploy.0 = Release|x64
+		{B842A62D-DD7B-4832-A115-661EB393B226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B842A62D-DD7B-4832-A115-661EB393B226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B842A62D-DD7B-4832-A115-661EB393B226}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B842A62D-DD7B-4832-A115-661EB393B226}.Debug|x64.Build.0 = Debug|Any CPU
+		{B842A62D-DD7B-4832-A115-661EB393B226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B842A62D-DD7B-4832-A115-661EB393B226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B842A62D-DD7B-4832-A115-661EB393B226}.Release|x64.ActiveCfg = Release|Any CPU
+		{B842A62D-DD7B-4832-A115-661EB393B226}.Release|x64.Build.0 = Release|Any CPU
+		{96C70E97-57F7-41F8-B5CB-2F0CA6668961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96C70E97-57F7-41F8-B5CB-2F0CA6668961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96C70E97-57F7-41F8-B5CB-2F0CA6668961}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{96C70E97-57F7-41F8-B5CB-2F0CA6668961}.Debug|x64.Build.0 = Debug|Any CPU
+		{96C70E97-57F7-41F8-B5CB-2F0CA6668961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96C70E97-57F7-41F8-B5CB-2F0CA6668961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96C70E97-57F7-41F8-B5CB-2F0CA6668961}.Release|x64.ActiveCfg = Release|Any CPU
+		{96C70E97-57F7-41F8-B5CB-2F0CA6668961}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

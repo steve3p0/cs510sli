@@ -77,6 +77,9 @@ namespace IpaDictator
                 };
         }
 
+
+
+
         protected override void OnActivityResult(int requestCode, Result resultVal, Intent data)
         {
             if (requestCode == VOICE)
