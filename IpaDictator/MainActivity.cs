@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace IpaDictator
 {
-    [Activity(Label = "IpaDictator", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "The IPA Dictator", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         private bool isRecording;
@@ -91,7 +91,13 @@ namespace IpaDictator
                         // limit the output to 500 characters
                         if (textInput.Length > 500)
                             textInput = textInput.Substring(0, 500);
+
+                        //string orthrography = textInput;
+                        //string phonetic = 
                         textBox.Text = textInput;
+
+
+
                     }
                     else
                         textBox.Text = "No speech was recognised";
