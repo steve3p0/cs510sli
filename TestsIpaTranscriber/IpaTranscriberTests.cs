@@ -18,9 +18,29 @@ namespace IpaTranscriber.Tests
             IpaTranscriber ipa = new IpaTranscriber();
 
             var input = "you";
-
             var expected = "ju";
-            //string output_ipa = ipa.TranscribePhrase(input).Trim();
+            string output_ipa = ipa.Transcribe(input).Trim();
+            Assert.AreEqual(output_ipa, expected);
+        }
+
+        [TestMethod()]
+        public void TranscribeWordTest2()
+        {
+            IpaTranscriber ipa = new IpaTranscriber();
+
+            var input = "are";
+            var expected = "ɑr";
+            string output_ipa = ipa.Transcribe(input).Trim();
+            Assert.AreEqual(output_ipa, expected);
+        }
+
+        [TestMethod()]
+        public void TranscribeWordTest3()
+        {
+            IpaTranscriber ipa = new IpaTranscriber();
+
+            var input = "kbapmftrkl";
+            var expected = "<OOV>";
             string output_ipa = ipa.Transcribe(input).Trim();
             Assert.AreEqual(output_ipa, expected);
         }
@@ -29,7 +49,6 @@ namespace IpaTranscriber.Tests
         public void TranscribePhraseTest1()
         {
             IpaTranscriber ipa = new IpaTranscriber();
-            //var phrase = "I am a student";
 
             var phrase = "I am a computer science student";
 
@@ -87,7 +106,7 @@ namespace IpaTranscriber.Tests
         }
 
         [TestMethod()]
-        public void TranscribePhraseOovTest()
+        public void TranscribePhraseTest_OOV()
         {
             IpaTranscriber ipa = new IpaTranscriber();
             var phrase = "I have placed information vital to the survival of the Rebellion into the memory systems of this R2 unit.";
