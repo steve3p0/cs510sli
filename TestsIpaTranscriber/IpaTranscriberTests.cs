@@ -12,44 +12,101 @@ namespace IpaTranscriber.Tests
     [TestClass()]
     public class IpaTranscriberTests
     {
-        //[TestMethod()]
-        //public void TranscribeTest()
-        //{
-        //    IpaTranscriber ipa = new IpaTranscriber();
-
-        //    //string result = ipa.Transcribe("effect", "noun");
-        //    string result = ipa.Transcribe("effect");
-        //    Assert.AreEqual(result, "'ɪ,fɛkt");
-        //}
-
-        //public void TranscribePhraseTest_old()
-        //{
-        //    IpaTranscriber ipa = new IpaTranscriber();
-
-        //    var regex = new Regex(@"\b[\s,\.-:;]*");
-        //    var phrase = "I am a student";
-        //    var words = regex.Split(phrase).Where(x => !string.IsNullOrEmpty(x));
-
-        //    string phrase_ipa = "";
-
-        //    foreach (var word in words)
-        //    {
-        //        //string result = ipa.Transcribe("effect", "noun");
-        //        phrase_ipa += ipa.Transcribe(word) + " ";
-        //    }
-
-        //    //Assert.AreEqual(result, "'ɪ,fɛkt");
-        //    Assert.Fail();
-        //}
-
         [TestMethod()]
-        public void TranscribePhraseTest()
+        public void TranscribeWordTest1()
         {
             IpaTranscriber ipa = new IpaTranscriber();
-            var phrase = "I am a student";
-            var expected = "/aɪ æm eɪ 'studənt/";
+
+            var input = "you";
+
+            var expected = "ju";
+            //string output_ipa = ipa.TranscribePhrase(input).Trim();
+            string output_ipa = ipa.Transcribe(input).Trim();
+            Assert.AreEqual(output_ipa, expected);
+        }
+
+        [TestMethod()]
+        public void TranscribePhraseTest1()
+        {
+            IpaTranscriber ipa = new IpaTranscriber();
+            //var phrase = "I am a student";
+
+            var phrase = "I am a computer science student";
+
+            var expected = "/aɪ æm eɪ kəm'pjutər 'saɪəns 'studənt/";
             string phrase_ipa = ipa.TranscribePhrase(phrase).Trim();
             Assert.AreEqual(phrase_ipa, expected);
+        }
+
+        [TestMethod()]
+        public void TranscribePhraseTest2_1()
+        {
+            IpaTranscriber ipa = new IpaTranscriber();
+
+            var phrase = "You are nice.";
+
+            var expected = "/ju ɑr nis/";
+            string phrase_ipa = ipa.TranscribePhrase(phrase).Trim();
+            Assert.AreEqual(phrase_ipa, expected);
+        }
+
+        [TestMethod()]
+        public void TranscribePhraseTest2()
+        {
+            IpaTranscriber ipa = new IpaTranscriber();
+            //var phrase = "I am a student";
+
+            var phrase = "You are a computational linguist.";
+
+            var expected = "/ju ɑr eɪ ,kɑmpju'teɪʃʌnʌl 'lɪŋgwɪst/";
+            string phrase_ipa = ipa.TranscribePhrase(phrase).Trim();
+            Assert.AreEqual(phrase_ipa, expected);
+        }
+
+        [TestMethod()]
+        public void TranscribePhraseTest3()
+        {
+            IpaTranscriber ipa = new IpaTranscriber();
+            //var phrase = "I am a student";
+
+            var phrase = "I am studying linguistics";
+
+            var expected = "/aɪ æm 'stʌdiɪŋ lɪŋ'gwɪstɪks/";
+            string phrase_ipa = ipa.TranscribePhrase(phrase).Trim();
+            Assert.AreEqual(phrase_ipa, expected);
+        }
+
+        [TestMethod()]
+        public void TranscribeWordOovTest()
+        {
+            IpaTranscriber ipa = new IpaTranscriber();
+            var phrase = "stormtrooper";
+            var expected = "/<OOV>/";
+            string phrase_ipa = ipa.TranscribePhrase(phrase).Trim();
+            Assert.AreEqual(phrase_ipa, expected);
+        }
+
+        [TestMethod()]
+        public void TranscribePhraseOovTest()
+        {
+            IpaTranscriber ipa = new IpaTranscriber();
+            var phrase = "I have placed information vital to the survival of the Rebellion into the memory systems of this R2 unit.";
+            var expected = "/aɪ hæv pleɪst ,ɪnfər'meɪʃən 'vaɪtəl tu ðʌ sər'vaɪvəl ʌv ðʌ rɪ'bɛljən ɪn'tu ðʌ 'mɛməri 'sɪstəm ʌv ðɪs <OOV> 'junɪt/";
+            string phrase_ipa = ipa.TranscribePhrase(phrase).Trim();
+            Assert.AreEqual(phrase_ipa, expected);
+        }
+
+        [TestMethod()]
+        public void TranscribeWordTest_POS()
+        {
+            IpaTranscriber ipa = new IpaTranscriber();
+
+            var input = "effect";
+
+            var expected = "ju";
+            //string output_ipa = ipa.TranscribePhrase(input).Trim();
+            string output_ipa = ipa.Transcribe(input).Trim();
+            Assert.AreEqual(output_ipa, expected);
         }
 
         //public void TranscribePhraseTest()

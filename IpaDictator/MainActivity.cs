@@ -103,7 +103,7 @@ namespace IpaDictator
                         IpaTranscriber.IpaTranscriber ipa = new IpaTranscriber.IpaTranscriber();
                         string textOutput = ipa.TranscribePhrase(textInput);
 
-                        textBox.Text = textInput + "\n" + textOutput;
+                        textBox.Text = textInput + "\n\n" + textOutput;
                     }
                     else
                         textBox.Text = "No speech was recognised";

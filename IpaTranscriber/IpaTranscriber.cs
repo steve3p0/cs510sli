@@ -9,59 +9,72 @@ using unirest_net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
+using IpaEntities;
 
 namespace IpaTranscriber
 {
-    public class Word
-    {
-        public string orthography { get; set; }
-
-        public List<Homonym> homonyms { get; set; }
-    }
-
-    public class JsonWord
-    {
-        [JsonProperty("pronounciation")]
-        public List<KeyValuePair<string, object>> pronounciation { get; set; }
-    }
-
-    public class Homonym
-    {
-        public string pos { get; set; }
-        public string phonentic { get; set; }
-    }
-
-
     public class IpaTranscriber
     {
-
         private static RapidAPI RapidApi = new RapidAPI("WordsAPI", "I7USuD9668mshgjnzGpcUTRZagbxp1Bty1Ejsn3hnAwwjDH9lM");
 
         public string Transcribe(string text)
         {
+
             //Newtonsoft.Json.Linq.JObject
             //string json = unirest_net.http.Unirest.get("https://wordsapiv1.p.mashape.com/words/effect/pronunciation")
-            string json = unirest_net.http.Unirest.get("https://wordsapiv1.p.mashape.com/words/" + text + "/pronunciation")
-                .header("X-Mashape-Key", "I7USuD9668mshgjnzGpcUTRZagbxp1Bty1Ejsn3hnAwwjDH9lM")
-                .header("Accept", "application/json")
-                .asJson<string>().Body;
+            string phonetic;
+            string json;
 
-            JToken outer = JToken.Parse(json);
-            JObject inner = outer["pronunciation"].Value<JObject>();
-
-            Word word = new Word();
-            word.orthography = text;
-            word.homonyms = new List<Homonym>();
-            foreach(var item in inner)
+            try
             {
-                Homonym h = new Homonym();
-                h.pos = item.Key;
-                h.phonentic = item.Value.ToString();
-                word.homonyms.Add(h);
-            }
+                json = unirest_net.http.Unirest.get("https://wordsapiv1.p.mashape.com/words/" + text + "/pronunciation")
+                    .header("X-Mashape-Key", "I7USuD9668mshgjnzGpcUTRZagbxp1Bty1Ejsn3hnAwwjDH9lM")
+                    .header("Accept", "application/json")
+                    .asJson<string>().Body;
 
-            string phonetic = word.homonyms.First<Homonym>().phonentic;
-            return phonetic;
+                JToken outer = JToken.Parse(json);
+                //List<JToken> tokens = outer.SelectTokens("$.pronunciation").ToList<JToken>();
+
+                Word word = new Word();
+                word.orthography = text;
+                word.homonyms = new List<Homonym>();
+                int count = outer["pronunciation"].Count<JToken>();
+
+                // There is just one element pronunciation
+                if (count == 0)
+                {
+                    Homonym h = new Homonym();
+                    h.isOov = true;
+                    word.homonyms.Add(h);
+                    phonetic = outer.SelectToken("$.pronunciation").ToString();
+                }
+                else if (!outer["pronunciation"].HasValues)
+                {
+                    Homonym h = new Homonym();
+                    h.isOov = true;
+                    word.homonyms.Add(h);
+                    phonetic = "<OOV>";
+                }
+                else
+                {
+                    JObject inner = outer["pronunciation"].Value<JObject>();
+
+                    foreach (var item in inner)
+                    {
+                        Homonym h = new Homonym();
+                        h.pos = item.Key;
+                        h.phonentic = item.Value.ToString();
+                        word.homonyms.Add(h);
+                    }
+                    phonetic = word.homonyms.First<Homonym>().phonentic;
+                }
+
+                return phonetic;
+            }
+            catch (Exception e)
+            {
+                return "<OOV>";
+            }
         }
 
         public string TranscribePhrase(string phrase)
@@ -70,7 +83,7 @@ namespace IpaTranscriber
 
             var regex = new Regex(@"\b[\s,\.-:;]*");
             //var phrase = "I am a student";
-            var words = regex.Split(phrase).Where(x => !string.IsNullOrEmpty(x));
+            var words = regex.Split(phrase.ToLower()).Where(x => !string.IsNullOrEmpty(x));
 
             string phrase_ipa = "";
 
@@ -84,7 +97,6 @@ namespace IpaTranscriber
             phrase_ipa = "/" + phrase_ipa.Trim() + "/";
             return phrase_ipa;
         }
-
 
         public string Transcribe(string text, string pos)
         {
