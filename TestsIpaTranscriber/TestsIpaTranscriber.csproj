@@ -51,7 +51,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="IpaTranscriberTests.cs" />
+    <Compile Include="IpaWordTranscriberTests.cs" />
+    <Compile Include="IpaPhraseTranscriberTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

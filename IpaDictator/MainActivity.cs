@@ -91,7 +91,9 @@ namespace IpaDictator
                     var matches = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
                     if (matches.Count != 0)
                     {
-                        string textInput = textBox.Text + matches[0];
+                        string textInput = "";
+                        textBox.Text = "";
+                        textInput = textBox.Text + matches[0];
 
                         // limit the output to 500 characters
                         if (textInput.Length > 500)
