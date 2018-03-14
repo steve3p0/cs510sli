@@ -13,14 +13,14 @@ namespace IpaPosTagger
         public void TagPos(string phrase)
         {
             try
-            { 
+            {
                 var sentence = new Sentence("Your text should go here");
                 //var lemmas = sentence.Lemmas;
 
-                
+                SimpleNetNlp.Document doc = new SimpleNetNlp.Document("");
                 var pos = sentence.PosTags;
 
-            
+
 
                 string blah = "blah";
             }

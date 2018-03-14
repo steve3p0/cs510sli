@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IpaPosTagger\IpaPosTagger.csproj">
-      <Project>{AED7CFD7-F763-4FA5-AB11-F826133AA266}</Project>
+      <Project>{c52e2964-81c7-43b0-81ef-1e29cc3b59aa}</Project>
       <Name>IpaPosTagger</Name>
     </ProjectReference>
   </ItemGroup>
