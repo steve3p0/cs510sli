@@ -27,7 +27,11 @@
             android:layout_weight="50"
             android:background="@drawable/textViewBorder"
             android:id="@+id/textView1"
-            android:padding="9" />
+            android:padding="9dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:id="@+id/space1" />
         <TextView
             android:text="/klɪk ɑn ðʌ 'maɪkrə,foʊn tu træn'skraɪb jɔr spiʧ ɪn'tu ðʌ ,ɪntər'næʃənəl fə'nɛtɪk 'ælfə,bɛt (aɪ-pi-eɪ)/"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -36,6 +40,6 @@
             android:layout_weight="50"
             android:background="@drawable/textViewBorder"
             android:id="@+id/textView2"
-            android:padding="9" />
+            android:padding="9dp" />
     </LinearLayout>
 </LinearLayout>
