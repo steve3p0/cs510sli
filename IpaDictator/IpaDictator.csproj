@@ -102,9 +102,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\microphone-2104091_1280.png" />
+    <AndroidResource Include="Resources\drawable\microphone_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\textViewBorder.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
 </Project>

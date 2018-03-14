@@ -7,7 +7,7 @@
     android:minHeight="25px"
     android:padding="15dp">
     <ImageButton
-        android:src="@drawable/microphone_2104091_1280"
+        android:src="@drawable/microphone_blue"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:id="@+id/imageButton1"
@@ -21,19 +21,21 @@
         android:id="@+id/linearLayout1">
         <TextView
             android:text="Click on the microphone to transcribe your speech into the International Phonetic Alphabet (IPA)"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="50"
             android:background="@drawable/textViewBorder"
-            android:id="@+id/textView1" />
+            android:id="@+id/textView1"
+            android:padding="9" />
         <TextView
             android:text="/klɪk ɑn ðʌ 'maɪkrə,foʊn tu træn'skraɪb jɔr spiʧ ɪn'tu ðʌ ,ɪntər'næʃənəl fə'nɛtɪk 'ælfə,bɛt (aɪ-pi-eɪ)/"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="50"
             android:background="@drawable/textViewBorder"
-            android:id="@+id/textView2" />
+            android:id="@+id/textView2"
+            android:padding="9" />
     </LinearLayout>
 </LinearLayout>
