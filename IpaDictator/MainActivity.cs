@@ -14,8 +14,9 @@ namespace IpaDictator
     {
         private bool isRecording;
         private readonly int VOICE = 10;
-        private TextView textBox;
-        private Button recButton;
+        private TextView textBoxOrthography;
+        private TextView textBoxIPA;
+        private ImageButton recButton;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -28,9 +29,10 @@ namespace IpaDictator
             SetContentView(Resource.Layout.Main);
 
             // get the resources from the layout
-            recButton = FindViewById<Button>(Resource.Id.btnRecord);
-            textBox = FindViewById<TextView>(Resource.Id.textYourText);
-
+            recButton = FindViewById<ImageButton>(Resource.Id.btnRecord);
+            //textBox = FindViewById<TextView>(Resource.Id.textYourText);
+            textBoxOrthography = FindViewById<TextView>(Resource.Id.textViewOrthography);
+            textBoxIPA = FindViewById<TextView>(Resource.Id.textViewIPA);
             // check to see if we can actually record - if we can, assign the event to the button
             string rec = Android.Content.PM.PackageManager.FeatureMicrophone;
             if (rec != "android.hardware.microphone")
@@ -40,7 +42,7 @@ namespace IpaDictator
                 alert.SetTitle("You don't seem to have a microphone to record with");
                 alert.SetPositiveButton("OK", (sender, e) =>
                 {
-                    textBox.Text = "No microphone present";
+                    textBoxOrthography.Text = "No microphone present";
                     recButton.Enabled = false;
                     return;
                 });
@@ -51,7 +53,7 @@ namespace IpaDictator
                 recButton.Click += delegate
                 {
                     // change the text on the button
-                    recButton.Text = "End Recording";
+                    //recButton.Text = "End Recording";
                     isRecording = !isRecording;
                     if (isRecording)
                     {
@@ -92,8 +94,9 @@ namespace IpaDictator
                     if (matches.Count != 0)
                     {
                         string textInput = "";
-                        textBox.Text = "";
-                        textInput = textBox.Text + matches[0];
+                        textBoxOrthography.Text = "";
+                        textBoxIPA.Text = "";
+                        textInput = textBoxOrthography.Text + matches[0];
 
                         // limit the output to 500 characters
                         if (textInput.Length > 500)
@@ -105,12 +108,13 @@ namespace IpaDictator
                         IpaTranscriber.IpaTranscriber ipa = new IpaTranscriber.IpaTranscriber();
                         string textOutput = ipa.TranscribePhrase(textInput);
 
-                        textBox.Text = textInput + "\n\n" + textOutput;
+                        textBoxOrthography.Text = textInput;
+                        textBoxIPA.Text = textOutput;
                     }
                     else
-                        textBox.Text = "No speech was recognised";
+                        textBoxOrthography.Text = "No speech was recognised";
                     // change the text back on the button
-                    recButton.Text = "Start Recording";
+                    //recButton.Text = "Start Recording";
                 }
             }
 

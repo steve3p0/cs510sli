@@ -1,60 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:weightSum="3">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1"
-        android:layout_weight="1"
-        android:gravity="center">
-        <Button
-            android:text="Start Recording"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnRecord" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
-        android:layout_weight="1">
-        <TextView
-            android:text="Transcribed Text:"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView1"
-            android:layout_marginLeft="5dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/textYourText"
-            android:textColor="@android:color/white"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="0.0dp" />
-        <LinearLayout
-            android:orientation="horizontal"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/linearLayout3"
-            android:layout_weight="1" />
-    </LinearLayout>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:padding="15dp">
+  <ImageButton
+      android:src="@drawable/microphone_blue"
+      android:layout_width="75dp"
+      android:layout_height="75dp"
+      android:scaleType="fitCenter"
+      android:id="@+id/btnRecord"
+      android:layout_gravity="center" />
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:orientation="vertical"
+      android:weightSum="100"
+      android:id="@+id/linearLayout1">
     <TextView
-        android:text="Text"
+        android:text="Click on the microphone to transcribe your speech into the International Phonetic Alphabet (IPA)"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:textSize="25dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="50"
+        android:background="@drawable/textViewBorder"
+        android:id="@+id/textViewOrthography"
+        android:padding="9dp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/space1" />
+    <TextView
+        android:text="/klɪk ɑn ðʌ 'maɪkrə,foʊn tu træn'skraɪb jɔr spiʧ ɪn'tu ðʌ ,ɪntər'næʃənəl fə'nɛtɪk 'ælfə,bɛt (aɪ-pi-eɪ)/"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="50"
+        android:background="@drawable/textViewBorder"
+        android:id="@+id/textViewIPA"
+        android:padding="9dp" />
+  </LinearLayout>
 </LinearLayout>
