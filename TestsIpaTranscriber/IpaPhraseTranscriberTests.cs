@@ -62,6 +62,18 @@ namespace IpaTranscriber.Tests
             Assert.AreEqual(phrase_ipa, expected);
         }
 
+        [TestMethod()]
+        public void TranscribePhraseTest5()
+        {
+            IpaTranscriber ipa = new IpaTranscriber();
+            //var phrase = "I am a student";
+
+            var phrase = "Click on the microphone to transcribe your speech into the International Phonetic Alphabet (IPA)";
+
+            var expected = "/aɪ æm 'stʌdiɪŋ lɪŋ'gwɪstɪks/";
+            string phrase_ipa = ipa.TranscribePhrase(phrase).Trim();
+            Assert.AreEqual(phrase_ipa, expected);
+        }
 
         [TestMethod()]
         public void TranscribePhraseTest_OOV()

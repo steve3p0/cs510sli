@@ -89,15 +89,15 @@ namespace IpaTranscriber
             {
                 //"{\"success\":false,\"message\":\"word not found\"}"
 
-                token = JToken.Parse(json);
+                //token = JToken.Parse(json);
                 // int count = token["success"].Count<JToken>();
-                bool success = true;
-                bool.TryParse(token.SelectToken("$.success").ToString(), out success);
-                string msg = token.SelectToken("$.message").ToString();
-                string errMsg = e.Message + "\n" + msg;
-                Homonym h = new Homonym();
-                h.isOov = true;
-                word.homonyms.Add(h);
+                //bool success = true;
+                //bool.TryParse(token.SelectToken("$.success").ToString(), out success);
+                //string msg = token.SelectToken("$.message").ToString();
+                //string errMsg = e.Message + "\n" + msg;
+                //Homonym h = new Homonym();
+                //h.isOov = true;
+                //word.homonyms.Add(h);
                 phonetic = "<OOV>";
 
                 return "<OOV>";
