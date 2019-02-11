@@ -3,7 +3,12 @@ using Android.Content;
 using Android.Widget;
 using Android.OS;
 using Android.Speech;
+using System.Text.RegularExpressions;
+using System.Linq;
+using Android.Views;
 using System.Collections.Generic;
+using System;
+using System.Threading;
 
 using IpaTranscriber;
 
@@ -17,6 +22,7 @@ namespace IpaDictator
         private TextView textBoxOrthography;
         private TextView textBoxIPA;
         private ImageButton recButton;
+        private Button buttonTranscribe;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -27,6 +33,8 @@ namespace IpaDictator
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+            buttonTranscribe = FindViewById<Button>(Resource.Id.buttonTranslate);
+            buttonTranscribe.Click += buttonTranscribe_OnClick;
 
             // get the resources from the layout
             recButton = FindViewById<ImageButton>(Resource.Id.btnRecord);
@@ -99,14 +107,8 @@ namespace IpaDictator
                         if (textInput.Length > 500)
                             textInput = textInput.Substring(0, 500);
 
-                        //string orthrography = textInput;
-                        //string phonetic = 
-
-                        IpaTranscriber.IpaTranscriber ipa = new IpaTranscriber.IpaTranscriber();
-                        string textOutput = ipa.TranscribePhrase(textInput);
-
                         textBoxOrthography.Text = textInput;
-                        textBoxIPA.Text = textOutput;
+                        textBoxIPA.Text = "";
                     }
                     else
                         textBoxOrthography.Text = "No speech was recognised";
@@ -117,7 +119,48 @@ namespace IpaDictator
 
             base.OnActivityResult(requestCode, resultVal, data);
         }
+
+        public void buttonTranscribe_OnClick(object sender, System.EventArgs e)
+        {
+            textBoxIPA.Text = "";
+            string phrase = textBoxOrthography.Text;
+            IpaTranscriber.IpaTranscriber ipa = new IpaTranscriber.IpaTranscriber();
+            var regex = new Regex(@"\b[\s,\.-:;]*");
+            //var phrase = "I am a student";
+            var words = regex.Split(phrase.ToLower()).Where(x => !string.IsNullOrEmpty(x));
+            string phrase_ipa = "";
+
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.SetCancelable(true);
+            progressDialog.SetMessage("Transcribing to IPA...");
+            progressDialog.SetProgressStyle(ProgressDialogStyle.Horizontal);
+            progressDialog.Progress = 0;
+            progressDialog.Max = 100;
+            progressDialog.Show();
+
+            // define and run background thread
+            new Thread(new ThreadStart(delegate
+            {
+                int wordcount = words.Count();
+                int wordweight = (int)Math.Floor(100.0 / wordcount);
+
+                foreach (var word in words)
+                {
+                    progressDialog.Progress += wordweight;
+                    //string result = ipa.Transcribe("effect", "noun");
+                    phrase_ipa += ipa.Transcribe(word) + " ";
+                }
+
+                progressDialog.Progress = 100;
+                progressDialog.SetMessage("Transcription complete.");
+
+                RunOnUiThread(() =>
+                {
+                    phrase_ipa = "/" + phrase_ipa.Trim() + "/";
+                    textBoxIPA.Text = phrase_ipa;
+                    progressDialog.Hide();
+                });
+            })).Start();
+        }
     }
 }
-
-

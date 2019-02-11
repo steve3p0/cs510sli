@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:padding="15dp">
+    android:padding="15dp"
+    tools:actionBarNavMode="tabs">
     <ImageButton
         android:src="@drawable/microphone_blue"
         android:layout_width="75dp"
@@ -21,7 +23,7 @@
         android:weightSum="100"
         android:id="@+id/linearLayout1">
         <TextView
-            android:text="Click on the microphone to transcribe your speech into the International Phonetic Alphabet (IPA)"
+            android:text="Click on the microphone to transcribe your speech into the International Phonetic Alphabet"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,13 +31,26 @@
             android:background="@drawable/textViewBorder"
             android:id="@+id/textViewOrthography"
             android:padding="9dp"
-            android:textIsSelectable="true" />
+            android:textIsSelectable="true"
+            android:editable="true" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:id="@+id/space2" />
+        <Button
+            android:text="Click to Translate to IPA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#25AAFF"
+            android:id="@+id/buttonTranslate"
+            android:clickable="true"
+            />
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:id="@+id/space1" />
         <TextView
-            android:text="/klɪk ɑn ðʌ 'maɪkrə,foʊn tu træn'skraɪb jɔr spiʧ ɪn'tu ðʌ ,ɪntər'næʃənəl fə'nɛtɪk 'ælfə,bɛt (aɪ-pi-eɪ)/"
+            android:text="/klɪk ɑn ðʌ 'maɪkrə,foʊn tu træn'skraɪb jɔr spiʧ ɪn'tu ðʌ ,ɪntər'næʃənəl fə'nɛtɪk 'ælfə,bɛt/"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

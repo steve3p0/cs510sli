@@ -85,14 +85,20 @@ namespace IpaDictator
 			// aapt resource value: 0x7f060000
 			public const int btnRecord = 2131099648;
 			
+			// aapt resource value: 0x7f060004
+			public const int buttonTranslate = 2131099652;
+			
 			// aapt resource value: 0x7f060001
 			public const int linearLayout1 = 2131099649;
 			
-			// aapt resource value: 0x7f060003
-			public const int space1 = 2131099651;
+			// aapt resource value: 0x7f060005
+			public const int space1 = 2131099653;
 			
-			// aapt resource value: 0x7f060004
-			public const int textViewIPA = 2131099652;
+			// aapt resource value: 0x7f060003
+			public const int space2 = 2131099651;
+			
+			// aapt resource value: 0x7f060006
+			public const int textViewIPA = 2131099654;
 			
 			// aapt resource value: 0x7f060002
 			public const int textViewOrthography = 2131099650;
