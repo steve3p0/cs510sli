@@ -5,8 +5,6 @@ using Android.OS;
 using Android.Speech;
 using System.Text.RegularExpressions;
 using System.Linq;
-using Android.Views;
-using System.Collections.Generic;
 using System;
 using System.Threading;
 
