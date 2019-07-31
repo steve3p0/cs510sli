@@ -1,5 +1,5 @@
-IPA Dictator
-==================
+The IPA Dictator
+================
 
 This android mobile app will transcribe what you say or type in English into the International Phonetic Alphabet (IPA).
 
